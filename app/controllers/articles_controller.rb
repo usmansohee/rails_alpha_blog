@@ -1,5 +1,7 @@
 class ArticlesController < ApplicationController
 
+  before_action :set_article, only: [:edit, :update, :show, :destroy]
+
   def index
     @article = Article.all
   end
@@ -20,15 +22,12 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.find(params[:id])      #from hash-payload used id to find article id.
   end
 
   def edit    #used for form
-    @article = Article.find(params[:id])
   end
 
   def update
-    @article = Article.find(params[:id])
     if @article.update(articles_params)
       redirect_to article_path(@article)
     else
@@ -36,12 +35,17 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def delete
-    @article = Article.find(params[:id])
+  def destroy
     @article.destroy
+    flash[:notice] = "Article Deleted"
+    redirect_to articles_path
   end
 
   private
+
+  def set_article
+    @article = Article.find(params[:id])
+  end
 
   def articles_params
     params.require(:article).permit(:title, :description)

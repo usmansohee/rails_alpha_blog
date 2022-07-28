@@ -5,4 +5,5 @@ Title:  <%= @article.title %> <br>
 Description:  <%= @article.title %>
 </p>
 
-<br><br><%= link_to "All Articles", articles_path %><br><br>
+<br><%= link_to "Edit this Article", edit_article_path(@article) %><br>
+<%= link_to "All Articles", articles_path %><br><br>

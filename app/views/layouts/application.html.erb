@@ -11,9 +11,7 @@
 
   <body>
 
-  <%flash.each do |key,message| %>
-    <li><%= message %></li>
-  <% end %>
+    <%= render 'layouts/flash_messages' %> <!-- layout/ is used to load from layouts by default it will load from the current views directory articles in this app case-->
 
     <%= yield %>
   </body>
