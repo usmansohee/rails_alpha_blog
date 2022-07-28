@@ -24,7 +24,7 @@ class ArticlesController < ApplicationController
   def show
   end
 
-  def edit    #used for form
+  def edit   #used for form
   end
 
   def update
