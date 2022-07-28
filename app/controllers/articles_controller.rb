@@ -1,6 +1,10 @@
 class ArticlesController < ApplicationController
 
-  def new
+  def index
+    @article = Article.all
+  end
+
+  def new     #used fo forms only
     @article = Article.new
   end
 
@@ -19,13 +23,12 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])      #from hash-payload used id to find article id.
   end
 
-  def edit
+  def edit    #used for form
     @article = Article.find(params[:id])
-    puts params
-    puts @article.inspect
   end
 
   def update
+    @article = Article.find(params[:id])
     if @article.update(articles_params)
       redirect_to article_path(@article)
     else
@@ -43,7 +46,5 @@ class ArticlesController < ApplicationController
   def articles_params
     params.require(:article).permit(:title, :description)
   end
-
-
 
 end
