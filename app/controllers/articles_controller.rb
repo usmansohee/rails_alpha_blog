@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(articles_params)
     if @article.save
-      flash[:notice] = "article created successfully"
+      flash[:info] = "Article Created Successfully"
       puts @article.inspect
       redirect_to article_path(@article)        #send hash as payload to the show action
     else
@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    flash[:notice] = "Article Deleted"
+    flash[:danger] = "Article Deleted"
     redirect_to articles_path
   end
 

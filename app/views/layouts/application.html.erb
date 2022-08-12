@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html >
   <head>
     <title>AplhaBlog</title>
     <%= csrf_meta_tags %>
@@ -11,8 +11,17 @@
 
   <body>
 
+    <%= render 'layouts/navigation' %>
+
     <%= render 'layouts/flash_messages' %> <!-- layout/ is used to load from layouts by default it will load from the current views directory articles in this app case-->
 
-    <%= yield %>
+    <div class="container">
+      <div class="jumbotron">
+        <%= yield %>
+        </div>
+    </div>
+
+    <%= render'layouts/footer' %>
+
   </body>
 </html>

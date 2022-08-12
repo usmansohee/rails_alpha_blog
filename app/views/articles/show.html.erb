@@ -1,9 +1,25 @@
-<h3> Saved Article </h3>
+<h3 class="mt-3"> Article Details </h3>
+<hr class="my-4">
 
-<p>
-Title:  <%= @article.title %> <br>
-Description:  <%= @article.title %>
-</p>
+<div class=" mt-6">
+  <div class="text-center">
+      <div style="display: inline-block;"> <h4>Title:</h4></div>
+      <div style="display: inline-block;"><%= @article.title %></div>
+  </div>
+  <div class="card bg-light">
+    <div class="card-body">
+      <div class="jumbotron mt-6">
+        <div style="display: inline-block;"> <h4>Description:</h4></div>
+        <div style="display: inline-block;"><%= @article.description %></div>
+      </div>
+      <br>
+      <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-sm btn-primary" %>
+      <%= link_to "View all articles", articles_path,  class: "btn btn-sm btn-success ml-2" %>
+      <%= button_to "Delete this article", article_path, method: :delete , class: "btn btn-sm btn-danger" %>
+    </div>
+  </div>
 
-<br><%= link_to "Edit this Article", edit_article_path(@article) %><br>
-<%= link_to "All Articles", articles_path %><br><br>
+</div>
+
+
+

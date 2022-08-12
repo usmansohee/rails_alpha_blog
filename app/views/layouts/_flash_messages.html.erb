@@ -1,3 +1,10 @@
-<%flash.each do |key,message| %>
-  <li><%= message %></li>
-<% end %>
+
+<!-- flash messages used in alert after action -->
+
+<div class="container mt-3">
+  <%flash.each do |key,message| %>
+    <div class='alert alert-<%="#{key}"%> '>
+      <%= content_tag :div, message, :id => "flash_#{message}" if message.is_a?(String) %>
+    </div>
+  <%end %>
+</div>
