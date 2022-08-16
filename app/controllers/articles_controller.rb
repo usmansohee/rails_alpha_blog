@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(articles_params)
+    @article.user = User.last
     if @article.save
       flash[:info] = "Article Created Successfully"
       puts @article.inspect
