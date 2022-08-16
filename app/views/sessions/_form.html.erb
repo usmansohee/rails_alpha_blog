@@ -1,0 +1,29 @@
+
+<div class="container">
+  <div class="jumbotron">
+    <hr class="my-4">
+    <%= form_for(:session, :html => {class: "form-horizontal justify-content-center", role: "form" }, url: login_path) do |form| %>
+      <div class="form-group mb-3 row">
+        <div class="control-label col-sm-1">
+          <%= form.label :email %>
+        </div>
+        <div class="col-sm-6 h-50">
+          <%= form.email_field :email, class: "form-control", placeholder:  "Email", autofocus: true %>
+        </div>
+      </div>
+      <div class="form-group mb-3 row">
+        <div class="control-label col-sm-1">
+          <%= form.label :password %>
+        </div>
+        <div class="col-sm-6 h-50">
+          <%= form.password_field :password, class: "form-control", placeholder:  "Password", autofocus: true %>
+        </div>
+      </div>
+      <div class="form-group mb-3 row">
+        <div class="control-label offset-1 col-sm-1">
+          <%= form.submit "Login", class: 'btn btn-primary btn-md' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

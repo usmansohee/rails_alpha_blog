@@ -18,10 +18,18 @@
             <a class="nav-link disabled">Disabled</a>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+
+
+        <% if logged_in? %>
+            <% puts logged_in? %>
+          <%= button_to "Logout", logout_path , method: :delete, class: "btn btn-secondary"%>
+
+          <%else %>
+          <%= link_to "Log in", login_path , class: "btn btn-secondary mr-2"%>
+          <%= link_to "Sign up", signup_path , class: "btn btn-secondary"%>
+        <%end %>
+
+
       </div>
     </div>
   </nav>
