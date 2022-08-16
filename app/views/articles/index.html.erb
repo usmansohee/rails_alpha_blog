@@ -1,20 +1,6 @@
 <h3 class="mt-3"> All Articles </h3>
 <hr class="my-4">
 
-<%@article.each do |article| %>
-  <div class="card bg-light mt-2">
-    <div class="card-body">
-      <h6><%= link_to article.title, article_path(article) %></h6>
-      <br>
-      <h6><%= article.description %></h6>
-      <hr class="my-4">
-      <p>Created by: <%=  article.user.username if article.user.present? %></p>
-        <p><%=  article.user.created_at if article.user.present? %></p>
-      <hr class="my-4">
-      <%= link_to "Edit this article", edit_article_path(article), class: "btn btn-secondary btn-sm" %></td>
-      <td> <%= button_to "Delete this article", article_path(article), method: :delete , class: "btn btn-sm btn-danger btn-sm" %>
-    </div>
-  </div>
-<%end %>
+<%= render 'article', obj: @article %>
 
 
