@@ -12,9 +12,9 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(articles_params)
+    @article.user = User.last
     if @article.save
       flash[:info] = "Article Created Successfully"
-      puts @article.inspect
       redirect_to article_path(@article)        #send hash as payload to the show action
     else
       render :new, status: :unprocessable_entity
