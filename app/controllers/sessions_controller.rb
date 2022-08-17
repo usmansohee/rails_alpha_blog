@@ -14,12 +14,11 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       flash[:success] = "Login Success"
       pp session[:user_id]
-      redirect_to users_path(@user)
+      redirect_to user_path(@user)
     else
       flash.now[:danger] = "Login Failed"
       render :new
     end
-
   end
 
   def destroy
