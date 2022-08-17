@@ -13,9 +13,11 @@
         <div style="display: inline-block;"><%= @article.description %></div>
       </div>
       <br>
-      <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-sm btn-primary" %>
-      <%= link_to "View all articles", articles_path,  class: "btn btn-sm btn-success ml-2" %>
-      <%= button_to "Delete this article", article_path, method: :delete , class: "btn btn-sm btn-danger" %>
+      <% if logged_in && (current_user == @article.user || current_user.admin?) %>
+        <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-sm btn-primary" %>
+        <%= button_to "Delete this article", article_path, method: :delete , class: "btn btn-sm btn-danger" %>
+      <% end %>
+        <%= link_to "View all articles", articles_path,  class: "btn btn-sm btn-success ml-2" %>
     </div>
   </div>
 
