@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
     #@current_usr ||= User.find_by(id: session[:user_id]) if session[:user_id]
 
     #@current_user will be nil initaiilay when called it will
-    if @current_usr
+    if @current_usr #if current_user have some valid value
       puts "@currnet_usr value: "
       puts @current_usr.inspect
       puts "if in current user"

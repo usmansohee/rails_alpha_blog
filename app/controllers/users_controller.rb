@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:edit, :update, :show]
-  before_action :check_logged_in_user, only: [:edit, :update]
-  before_action :require_admin, only: [:destroy]
+  before_action :set_user, only: [:edit, :update, :show] #getting data against provided id
+  before_action :check_logged_in_user, only: [:edit, :update] #check if the user is logged in or not
+  before_action :require_admin, only: [:destroy] # restrict logged-in user to perform only its own actions or change-details.
 
   def index
     @user = User.all

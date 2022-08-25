@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
 
-  before_action :set_article, only: [:edit, :update, :show, :destroy]
+  before_action :set_article, only: [:edit, :update, :show, :destroy] #getting data against provided id
   before_action :require_user, except: [:index, :show]  # user must login to perform these actions
   before_action :check_logged_in_user, only: [:edit, :update, :destroy] # restrict logged-in user to perform only its own actions or change-details.
 
