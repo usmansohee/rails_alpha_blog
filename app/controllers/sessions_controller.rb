@@ -10,8 +10,8 @@ class SessionsController < ApplicationController
 
     @user = User.find_by(email: email)
 
-    if @user && @user.authenticate(pass)
-      session[:user_id] = @user.id
+    if @user && @user.authenticate(pass) #using authenticate() method from bcrypt to check valid
+      session[:user_id] = @user.id #assigning session current user_id
       flash[:success] = "Login Success"
       pp session[:user_id]
       redirect_to user_path(@user)
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    session[:user_id] = nil #destroying session in logout
     flash[:info] = "User Logged out"
     redirect_to root_path
   end
