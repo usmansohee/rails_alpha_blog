@@ -21,10 +21,6 @@ ActiveRecord::Schema.define(version: 2022_08_25_123903) do
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "name"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
