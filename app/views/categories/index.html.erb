@@ -1,0 +1,30 @@
+<h3 class="mt-3"> All Categories </h3>
+<hr class="my-4">
+
+<div class="card bg-light mt-2">
+  <div class="card-body">
+      <table class="table">
+        <thead>
+          <th>ID</th>
+          <th>Category Name</th>
+          <th>Action</th>
+        </thead>
+        <% @category.each do |category| %>
+        <tbody>
+        <td><%= category.id %></td>
+        <td><%= category.name %></td>
+        <td>
+          <%if logged_in && current_user.admin? %>
+          <%= link_to "Edit this category", edit_category_path(category), class: "btn btn-secondary btn-sm" %></td>
+          <td> <%= button_to "Delete this category", category_path(category), method: :delete , class: "btn btn-sm btn-danger btn-sm" %>
+        <% end %>
+        </th>
+        </tbody>
+        <%end %>
+      </table>
+
+    </div>
+  </div>
+
+
+
