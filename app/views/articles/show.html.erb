@@ -9,9 +9,14 @@
   <div class="card bg-light">
     <div class="card-body">
       <div class="jumbotron mt-6">
-        <div style="display: inline-block;"> <h4>Description:</h4></div>
+        <div style="display: inline-block;"> <h5>Description:</h5></div>
         <div style="display: inline-block;"><%= @article.description %></div>
       </div>
+      <h5 style="display: inline-block;"> Categories:   </h5>
+      <% @article.categories.each do |category|%>
+        <span class="badge bg-primary"><%= category.name%></span>
+      <%end %>
+      <br>
       <br>
       <% if logged_in && (current_user == @article.user || current_user.admin?) %>
         <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-sm btn-primary" %>

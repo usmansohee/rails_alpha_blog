@@ -2,8 +2,11 @@
   <div class="card bg-light mt-2">
     <div class="card-body">
       <h6><%= link_to article.title, article_path(article) %></h6>
-      <br>
       <h6><%= article.description %></h6>
+      <%  article.categories.each do |category|%>
+        <span class="badge bg-primary"><%= category.name%></span>
+      <%end %>
+
       <hr class="my-4">
       <p>Created by: <%=  article.user.username if article.user.present? %></p>
       <p><%=  article.user.created_at if article.user.present? %></p>

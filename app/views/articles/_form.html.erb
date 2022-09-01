@@ -27,7 +27,7 @@
           <%= form.label :title %>
         </div>
         <div class="col-sm-6">
-          <%= form.text_field :title, class: "form-control", placeholder:  "Article Title", autofocus: true%>
+          <%= form.text_field :title, class: "form-control", placeholder:  "Article Title", autofocus: true%>nart
         </div>
       </div>
       <div class="form-group mb-3 row">
@@ -36,6 +36,13 @@
         </div>
         <div class="col-sm-6 h-50">
           <%= form.text_area :description, class: "form-control", placeholder:  "Article Description", autofocus: true, rows: "6"%>
+        </div>
+      </div>
+      <div class="form-group mb-3 row">
+        <div class="control-label offset-1 col-sm-1" style="display: inline-block;"> <!-- did not understand completely for check-boxes integration but-works done -->
+          <%= form.collection_check_boxes :category_ids, Category.all, :id, :name do |cb|%>
+              <%= cb.label(class: "checkbox-inline input_checkbox") { cb.check_box(class: "checkbox")  + cb.text  } %>
+          <% end %>
         </div>
       </div>
       <div class="form-group mb-3 row">

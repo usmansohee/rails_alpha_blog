@@ -1,11 +1,15 @@
 class CategoriesController < ApplicationController
 
   before_action :set_category, only: [:edit, :update, :show, :destroy]
+  before_action :check_admin, only: [:new, :create, :edit, :update, :destroy]
+
+
   def index
     @category = Category.all
   end
 
   def new
+    puts "nrew categroy"
     @category = Category.new
   end
 
@@ -55,5 +59,11 @@ class CategoriesController < ApplicationController
     params.require(:category).permit(:name)
   end
 
+  def check_admin
+    if !logged_in || (logged_in and !current_user.admin?)
+      flash[:danger] = "you must have admin rights before perform this action"
+      redirect_to root_path
+    end
+  end
 
 end
