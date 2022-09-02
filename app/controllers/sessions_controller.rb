@@ -10,10 +10,9 @@ class SessionsController < ApplicationController
 
     @user = User.find_by(email: email)
 
-    if @user && @user.authenticate(pass) #using authenticate() method from bcrypt to check valid
-      session[:user_id] = @user.id #assigning session current user_id
+    if @user && @user.authenticate(pass) # using authenticate() method from bcrypt to check valid
+      session[:user_id] = @user.id # assigning session current user_id
       flash[:success] = "Login Success"
-      pp session[:user_id]
       redirect_to user_path(@user)
     else
       flash.now[:danger] = "Login Failed"
