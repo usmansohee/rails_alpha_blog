@@ -1,16 +1,18 @@
-<% obj.each do |article| %>
+
+<% obj.each.with_index(1) do |article, index| %>
   <div class="card bg-light mt-2">
     <div class="card-body">
-      <h6><%= link_to article.title, article_path(article) %></h6>
-      <h6><%= article.description %></h6>
+      <p><b>Article No:</b> <%= index %></p>
+      <p><b>Article Title:</b> <%= link_to article.title, article_path(article) %></p>
+      <p><b>Article Description:</b> <%= article.description %></p>
+      <span><b>Category:  </b></span>
       <%  article.categories.each do |category|%>
         <span class="badge bg-primary"><%= category.name%></span>
       <%end %>
 
       <hr class="my-4">
-      <p>Created by: <%=  article.user.username if article.user.present? %></p>
+      <p><b>Created by: </b> <%=  article.user.username if article.user.present? %></p>
       <p><%=  article.user.created_at if article.user.present? %></p>
-      <hr class="my-4">
       <%if logged_in && (current_user == article.user || current_user.admin?) %>
         <% puts current_user.inspect
           puts article.user.inspect%>

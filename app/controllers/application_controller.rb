@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   # important methods:
-  # -i used these methods to restricting access of logged in user and non-logged in users in UI - by using them views
+  # used these methods to restricting access of logged-in user and non-logged in users in UI - by using them views
   helper_method :current_user, :logged_in
 
   def current_user
@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     puts "current session status: #{session[:user_id]}"
     #@current_usr ||= User.find_by(id: session[:user_id]) if session[:user_id]
 
-    #@current_user will be nil initaiilay when called it will
+    #@current_user will be nil initaiilay when called it will go in else by default first time
     if @current_usr #if current_user have some valid value
       puts "@currnet_usr value: "
       puts @current_usr.inspect

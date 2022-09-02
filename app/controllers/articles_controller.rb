@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
     @article = Article.new(articles_params)
     @article.user = current_user
     if @article.save
-      flash[:info] = "Article Created Successfully"
+      flash[:info] = "Article created"
       redirect_to article_path(@article)        #send hash as payload to the show action
     else
       render :new, status: :unprocessable_entity
@@ -39,7 +39,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    flash[:danger] = "Article Deleted"
+    flash[:danger] = "Article deleted"
     redirect_to articles_path
   end
 
@@ -55,7 +55,7 @@ class ArticlesController < ApplicationController
 
   def check_logged_in_user
     if !logged_in && current_user and !current_user.admin?
-      flash[:danger] = "you are allowed to perform action on only your account"
+      flash[:danger] = "User not logged-in OR wrong user to perform this action"
       redirect_to root_path
     end
   end

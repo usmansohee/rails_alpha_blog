@@ -3,21 +3,21 @@
 
 <div class=" mt-6">
   <div class="text-center">
-      <div style="display: inline-block;"> <h4>Title:</h4></div>
+      <div style="display: inline-block;"> <p><b>Title:</b></p></div>
       <div style="display: inline-block;"><%= @article.title %></div>
   </div>
   <div class="card bg-light">
     <div class="card-body">
       <div class="jumbotron mt-6">
-        <div style="display: inline-block;"> <h5>Description:</h5></div>
+        <div style="display: inline-block;"> <p><b>Description:</b></p></div>
         <div style="display: inline-block;"><%= @article.description %></div>
       </div>
-      <h5 style="display: inline-block;"> Categories:   </h5>
+      <p style="display: inline-block;"><b> Categories:   </b></p>
       <% @article.categories.each do |category|%>
         <span class="badge bg-primary"><%= category.name%></span>
       <%end %>
-      <br>
-      <br>
+      <br><br>
+
       <% if logged_in && (current_user == @article.user || current_user.admin?) %>
         <%= link_to "Edit this article", edit_article_path(@article), class: "btn btn-sm btn-primary" %>
         <%= button_to "Delete this article", article_path, method: :delete , class: "btn btn-sm btn-danger" %>
@@ -25,7 +25,6 @@
         <%= link_to "View all articles", articles_path,  class: "btn btn-sm btn-success ml-2" %>
     </div>
   </div>
-
 </div>
 
 

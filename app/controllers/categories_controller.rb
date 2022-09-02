@@ -3,13 +3,11 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update, :show, :destroy]
   before_action :check_admin, only: [:new, :create, :edit, :update, :destroy]
 
-
   def index
     @category = Category.all
   end
 
   def new
-    puts "nrew categroy"
     @category = Category.new
   end
 
@@ -17,7 +15,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
 
     if @category.save
-      flash[:success] = "category saved successfully"
+      flash[:success] = "New category added"
       redirect_to categories_path
     else
       render :new
@@ -31,7 +29,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      flash[:success] = "category updated success"
+      flash[:success] = "Category updated"
       redirect_to categories_path
     else
       render :edit
@@ -45,7 +43,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    flash[:danger] = "Category Deleted"
+    flash[:danger] = "Category deleted"
     redirect_to categories_path
   end
 
@@ -61,7 +59,7 @@ class CategoriesController < ApplicationController
 
   def check_admin
     if !logged_in || (logged_in and !current_user.admin?)
-      flash[:danger] = "you must have admin rights before perform this action"
+      flash[:danger] = "You must have admin rights to perform this action"
       redirect_to root_path
     end
   end

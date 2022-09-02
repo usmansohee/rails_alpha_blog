@@ -1,20 +1,24 @@
+
 <h3 class="mt-3"> All Bloggers </h3>
 <hr class="my-4">
 
-<% @user.each do |user| %>
+<% @user.each.with_index(1)  do |user, index| %>
   <div class="card bg-light mt-2">
     <div class="card-body">
-      <h6>Name: <%= link_to user.username, user_path(user) %></h6>
-      <h6>Email: <%= user.email %></h6>
+      <p><b>User No: </b> <%= index %></p>
+      <p><b>User Name: </b> <%= link_to user.username, user_path(user) %></p>
+      <p><b>User Email: </b> <%= user.email %></p>
       <hr class="my-4">
-      <p>Total Articles: <%=  user.articles.count %></p>
-      <hr class="my-4">
-
+      <p><b>Total Articles:</b> <%=  user.articles.count %></p>
       <%if logged_in && current_user.admin? %>
-        <%= link_to "Edit this user", edit_user_path(user), class: "btn btn-secondary btn-sm" %></td>
-        <td> <%= button_to "Delete this user", user_path(user), method: :delete , class: "btn btn-sm btn-danger btn-sm" %>
+        <%= link_to "Edit this user", edit_user_path(user), class: "btn btn-secondary btn-sm" %>
+        <%= button_to "Delete this user", user_path(user), method: :delete , class: "btn btn-sm btn-danger btn-sm" %>
+        <% if !user.admin? %>
+          <%= button_to "Grant admin access",user_admin_path(user) ,class: "btn btn-secondary btn-sm" %>
+        <%else %>
+          <%= button_to "Revoke admin access",user_admin_path(user) ,class: "btn btn-secondary btn-sm" %>
+        <% end  %>
       <% end %>
-
     </div>
   </div>
 <%end %>

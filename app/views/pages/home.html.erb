@@ -1,15 +1,18 @@
 
 <div class="container justify--center">
   <div class="jumbotron mt-30">
-    <h1 class="display-4">Aplha Blog Application</h1>
-    <p class="lead"> intro... </p>
+    <h1 class="display-4">Aplha Blog Web App.</h1>
+    <p class="lead">  </p>
     <hr class="my-4">
-    <p>description...</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Signup</a>
+    <p>This app allow bloggers to add new and perform other actions related to their articles based on different categories and read other users articles as well.</p>
 
+    <img src="cvr2.jpg" class="img-fluid text-center" alt="Responsive image">
+    <hr>
+
+    <%if !logged_in %>
+    <%= link_to "Sign up", signup_path , class: "btn btn-primary btn-lg "%>
+    <% end %>
   </div>
-    <br><br><%= link_to "All Articles", articles_path %><br><br>
-  <%= link_to "Login", login_path %>
 </div>
 
 
